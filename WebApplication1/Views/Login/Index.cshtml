@@ -1,0 +1,28 @@
+﻿@model WebApplication1.Models.Login
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg mt-5">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Iniciar Sesión</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Login" asp-action="Index" method="post">
+                        <input type="text" name="NombreUsuario" placeholder="Usuario" required />
+                        <input type="password" name="Contrasena" placeholder="Contraseña" required />
+                        <button type="submit">Ingresar</button>
+                    </form>
+
+                </div>
+                <div class="card-footer text-center">
+                    <a href="#">¿Olvidó su contraseña?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

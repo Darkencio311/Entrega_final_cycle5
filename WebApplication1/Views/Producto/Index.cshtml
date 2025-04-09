@@ -1,0 +1,24 @@
+﻿@model List<TuProyecto.Models.Producto>
+
+@{
+    ViewData["Title"] = "Tarjetas Gráficas";
+}
+
+<h2>Tarjetas Gráficas Disponibles</h2>
+
+<div class="row">
+    @foreach (var producto in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="~/images/@(producto.Nombre.Replace(" ", "").ToLower()).jpg" class="card-img-top" alt="@producto.Nombre">
+                <div class="card-body">
+                    <h5 class="card-title">@producto.Nombre</h5>
+                    <p class="card-text">@producto.Descripcion</p>
+                    <h6 class="card-subtitle mb-2 text-muted">@producto.Precio.ToString("C")</h6>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

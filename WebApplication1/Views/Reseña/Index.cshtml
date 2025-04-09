@@ -1,0 +1,60 @@
+﻿@model TuProyecto.Models.Reseña
+
+@{
+    ViewData["Title"] = "Dejar Reseña";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Index" method="post">
+    <div class="mb-3">
+        <label asp-for="Comentario" class="form-label"></label>
+        <textarea asp-for="Comentario" class="form-control"></textarea>
+        <span asp-validation-for="Comentario" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Calificación</label>
+        <div class="star-rating">
+            @for (int i = 1; i <= 5; i++)
+            {
+                <input type="radio" id="star@i" name="Calificacion" value="@i" />
+                <label for="star@i">&#9733;</label>
+            }
+        </div>
+        <span asp-validation-for="Calificacion" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+@if (ViewBag.Mensaje != null)
+{
+    <div class="alert alert-success mt-3">@ViewBag.Mensaje</div>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <style>
+        .star-rating {
+            direction: rtl;
+            font-size: 2rem;
+            display: inline-flex;
+        }
+
+            .star-rating input {
+                display: none;
+            }
+
+            .star-rating label {
+                color: lightgray;
+                cursor: pointer;
+            }
+
+                .star-rating input:checked ~ label,
+                .star-rating label:hover,
+                .star-rating label:hover ~ label {
+                    color: gold;
+                }
+    </style>
+}
